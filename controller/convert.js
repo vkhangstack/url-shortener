@@ -14,16 +14,21 @@ module.exports = {
         !inputUrl ||
         (!inputUrl.match(httpRegex) && !inputUrl.match(httpsRegex))
       ) {
-        return res.send('Input wrong');
+        return res.render('shorter', {
+          error: 'Please enter a valid url starting with: https://',
+          url: '',
+        });
       }
 
       //check if input url exists in database
       const urlResult = await Url.findOne({ originalUrl: inputUrl });
       // if url already exists in database,
       if (urlResult)
-        return res.status(200).json({
-          url: urlResult,
+        return res.render('shorter', {
+          error: '',
+          url: `${process.env.BASE_HOST}/${urlResult.shortenedUrl}`,
         });
+
       let shortenedUrl = '';
       while (true) {
         // generate shortenerUrl
@@ -42,8 +47,9 @@ module.exports = {
         originalUrl: inputUrl,
         shortenedUrl,
       });
-      res.json({
+      res.render('shorter', {
         url: `${process.env.BASE_HOST}/${shortenedUrl}`,
+        error: '',
       });
     } catch (error) {}
   },
@@ -52,7 +58,7 @@ module.exports = {
     await Url.findOne({ shortenedUrl: req.params.shortenedUrl }).then(
       (data) => {
         // no such url
-        if (!data) return res.status(404).send('No such url');
+        if (!data) return res.redirect('/');
         res.redirect(data.originalUrl);
       },
     );

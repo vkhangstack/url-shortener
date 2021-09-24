@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+      <meta name="description" content="Url shorter">
+      <title>URL Shortener</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Caveat:700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+      <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+      <section class="d-flex flex-column justify-content-center vh-100">
+            <h1 class="text-center title display-3 my-0 animated heartBeat">URL Shortener</h1>
+            <h1 class="display-1 text-center my-5 link-picture animated jackInTheBox"><i class="fas fa-link"></i></h1>
+            <form class="w-75 mx-auto d-flex flex-column align-items-center animated jackInTheBox" novalidate
+                  method="POST" action="/convert">
+                  <% if(error){%>
+                        <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+
+                              <p>
+                                    <%= error%>
+                              </p>
+
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                        <% } %>
+                              <div class="form-group w-100">
+                                    <label for="url" class="sr-only"></label>
+                                    <input type="url" name="url" id="url" class="form-control" pattern="https?://.+"
+                                          value="" placeholder="Your Website URL" required>
+
+                              </div>
+                              <div class="input-group w-100" id="url-result">
+                                    <input type="url" id="result" name="result" class="form-control" value="<%=url%>">
+                                    <div class=" input-group-append mb-3">
+                                          <button class="btn btn-outline-secondary" type="button" id="copy-btn"
+                                                onclick="copyUrl()">Copy</button>
+                                    </div>
+                              </div>
+                              <div class="buttons d-flex w-100 justify-content-center mt-3">
+                                    <button class="btn btn-primary mr-4 px-5" id="submit">Submit</button>
+                                    <button class="btn btn-danger px-5" id="" type="reset">Reset</button>
+                              </div>
+            </form>
+      </section>
+      <span></span>
+      <script src=" https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+      <script src="/js/index.js"></script>
+</body>
+
+</html>

@@ -8,9 +8,14 @@ const { getShortened, getOriginal } = require('./controller/convert');
 connectDB();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+
+app.get('/', async (req, res) => {
+  res.render('shorter', { error: '', url: '' });
+});
 
 app.post('/convert', getShortened);
 app.get('/:shortenedUrl', getOriginal);
