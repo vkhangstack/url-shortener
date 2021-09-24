@@ -1,5 +1,10 @@
 body {
       font-family: 'Bangers', cursive;
+      background: #a96be2b3
+}
+
+.text-color {
+      color: #fff;
 }
 
 section {
@@ -8,7 +13,7 @@ section {
 }
 
 .link-picture .fa-link:before {
-      background: -webkit-linear-gradient(45deg, #1fddff, #1fddff 50%, #ff4b1f 50%);
+      background: -webkit-linear-gradient(45deg, #1fddff, #1fddff 50%, #923de0 50%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 }
@@ -38,4 +43,13 @@ input {
       border-color: #686868;
       background: none;
       padding-right: inherit;
+}
+
+.footer {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+      padding-top: 70px;
+      color: rgb(255, 255, 255);
 }

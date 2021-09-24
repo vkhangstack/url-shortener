@@ -19,7 +19,7 @@
 
 <body>
       <section class="d-flex flex-column justify-content-center vh-100">
-            <h1 class="text-center title display-3 my-0 animated heartBeat">URL Shortener</h1>
+            <h1 class="text-center text-color title display-3 my-0 animated heartBeat">URL Shortener</h1>
             <h1 class="display-1 text-center my-5 link-picture animated jackInTheBox"><i class="fas fa-link"></i></h1>
             <form class="w-75 mx-auto d-flex flex-column align-items-center animated jackInTheBox" novalidate
                   method="POST" action="/convert">
@@ -44,7 +44,7 @@
                               <div class="input-group w-100" id="url-result">
                                     <input type="url" id="result" name="result" class="form-control" value="<%=url%>">
                                     <div class=" input-group-append mb-3">
-                                          <button class="btn btn-outline-secondary" type="button" id="copy-btn"
+                                          <button class="btn btn-outline-primary" type="button" id="copy-btn"
                                                 onclick="copyUrl()">Copy</button>
                                     </div>
                               </div>
@@ -53,8 +53,11 @@
                                     <a href="" class="btn btn-danger px-5" type="reset">Reset</a>
                               </div>
             </form>
+
+            <div class="footer animated tada">Copyright &copy; 2021 | Phạm Văn Khang
+            </div>
       </section>
-      <span></span>
+
       <script src=" https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
