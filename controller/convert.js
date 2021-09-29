@@ -18,7 +18,7 @@ module.exports = {
       }
 
       //check if input url exists in database
-      const urlResult = await Url.findOne({ originalUrl: inputUrl });
+      const urlResult = await Url.findOne({ originalUrl: inputUrl }, callback);
       // if url already exists in database,
       if (urlResult)
         return res.status(200).json({
@@ -34,7 +34,7 @@ module.exports = {
           .slice(0, 6);
 
         // check if this url is unique
-        const url = await Url.findOne({ shortenedUrl: shortenedUrl });
+        const url = await Url.findOne({ shortenedUrl: shortenedUrl }, callback);
         if (!url) break;
       }
 
@@ -49,7 +49,7 @@ module.exports = {
   },
 
   getOriginal: async (req, res) => {
-    await Url.findOne({ shortenedUrl: req.params.shortenedUrl }).then(
+    await Url.findOne({ shortenedUrl: req.params.shortenedUrl }, callback).then(
       (data) => {
         // no such url
         if (!data) return res.status(404).send('No such url');
