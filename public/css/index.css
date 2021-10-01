@@ -15,6 +15,7 @@ section {
 .link-picture .fa-link:before {
       background: -webkit-linear-gradient(45deg, #1fddff, #1fddff 50%, #923de0 50%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
 }
 
