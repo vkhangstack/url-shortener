@@ -1,3 +1,4 @@
+'use strict';
 const crypto = require('crypto');
 const Url = require('../models/url');
 
@@ -51,7 +52,9 @@ module.exports = {
         url: `${process.env.BASE_HOST}/${shortenedUrl}`,
         error: '',
       });
-    } catch (error) {}
+    } catch (error) {
+      return res.redirect('/');
+    }
   },
 
   getOriginal: async (req, res) => {

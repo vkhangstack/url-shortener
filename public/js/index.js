@@ -1,3 +1,4 @@
+'use strict';
 function copyUrl() {
   let copyText = document.getElementById('result');
   copyText.select();
