@@ -31,7 +31,7 @@ module.exports = {
         });
 
       let shortenedUrl = '';
-      while (typeof true) {
+      while (true) {
         // generate shortenerUrl
         shortenedUrl = crypto
           .randomBytes(Math.ceil((5 * 3) / 4))
