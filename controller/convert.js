@@ -31,7 +31,7 @@ module.exports = {
         });
 
       let shortenedUrl = '';
-      while (true) {
+      while (typeof true) {
         // generate shortenerUrl
         shortenedUrl = crypto
           .randomBytes(Math.ceil((5 * 3) / 4))
@@ -40,7 +40,7 @@ module.exports = {
           .slice(0, 6);
 
         // check if this url is unique
-        const url = await Url.findOne({ shortenedUrl: { $eq: shortenedUrl } });
+        const url = Url.findOne({ shortenedUrl: { $eq: shortenedUrl } });
         if (!url) break;
       }
 
