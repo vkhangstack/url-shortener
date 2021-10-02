@@ -13,7 +13,7 @@ module.exports = {
       // add server side validate
       if (
         !inputUrl ||
-        (!inputUrl.match(httpRegex).test(str) && !inputUrl.match(httpsRegex))
+        (!inputUrl.match(httpRegex) && !inputUrl.match(httpsRegex))
       ) {
         return res.render('shorter', {
           error: 'Please enter a valid url starting with: https://',
@@ -31,7 +31,7 @@ module.exports = {
         });
 
       let shortenedUrl = '';
-      while (true) {
+      while (typeof true) {
         // generate shortenerUrl
         shortenedUrl = crypto
           .randomBytes(Math.ceil((5 * 3) / 4))
