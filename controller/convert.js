@@ -13,7 +13,7 @@ module.exports = {
       // add server side validate
       if (
         !inputUrl ||
-        (!inputUrl.match(httpRegex) && !inputUrl.match(httpsRegex))
+        (!inputUrl.match(httpRegex).test(str) && !inputUrl.match(httpsRegex))
       ) {
         return res.render('shorter', {
           error: 'Please enter a valid url starting with: https://',
@@ -31,7 +31,7 @@ module.exports = {
         });
 
       let shortenedUrl = '';
-      while (typeof true) {
+      while (true) {
         // generate shortenerUrl
         shortenedUrl = crypto
           .randomBytes(Math.ceil((5 * 3) / 4))
@@ -58,12 +58,12 @@ module.exports = {
   },
 
   getOriginal: async (req, res) => {
-    await Url.findOne({ shortenedUrl: { $eq: req.params.shortenedUrl } }).then(
-      (data) => {
-        // no such url
-        if (!data) return res.redirect('/');
-        res.redirect(data.originalUrl);
-      },
-    );
+    const data = await Url.findOne({
+      shortenedUrl: { $eq: req.params.shortenedUrl },
+    });
+    console.log(data);
+    // if data is not found
+    if (!data) return res.redirect('/');
+    res.redirect(data.originalUrl);
   },
 };
