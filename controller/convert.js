@@ -6,13 +6,13 @@ module.exports = {
     const inputUrl = req.body.url;
     try {
       // validate input url
-      const httpRegex = /^http:\/\//;
-      const httpsRegex = /^https:\/\//;
+      const httpPattern = 'http://';
+      const httpsPattern = 'https://';
 
       // add server side validate
       if (
         !inputUrl ||
-        (!inputUrl.match(httpRegex) && !inputUrl.match(httpsRegex))
+        (!(inputUrl.indexOf(httpPattern) === -1) && !(inputUrl.indexOf(httpsPattern) === -1))
       ) {
         return res.send('Input wrong');
       }
